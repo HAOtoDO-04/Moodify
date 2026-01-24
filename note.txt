@@ -1,0 +1,80 @@
+The callback url of GitHub that you are using is not working
+https://github.com/HAOtoDO-04/Moodify.git
+
+
+Spotify API: https://developer.spotify.com/dashboard
+
+Links:
+https://www.chosic.com/mood-playlist-generator/?utm_source=chatgpt.com
+https://moodpalettegenerator.net/?utm_source=chatgpt.com#demo
+https://moodcolorgenerator.com/?utm_source=chatgpt.com
+
+Quotes:
+“Turn your mood into color and sound."
+“Feel it. See it. Hear it.”
+“Your emotions, reimagined through music and color.”
+“Where moods become music and art.”
+“Express how you feel—visually and musically.”
+
+
+Description:
+Moodify is a creative, interactive website that transforms emotions into music, colors, and calming visuals. Choose a mood and explore a personalized experience designed to match how you feel.
+
+Moods:
+
+😊 Positive / Happy Moods
+1. 😀 Happy
+2. 😄 Joyful
+3. 🤩 Excited
+4. 😌 Content
+5. 🥰 Loved
+6. 😎 Confident
+7. 🙌 Motivated
+8. 😇 Grateful
+
+😌 Calm / Relaxed Moods
+1. 😌 Relaxed
+2. 🧘 Peaceful
+3. 🌊 Calm
+4. 😴 Sleepy
+5. ☁️ Dreamy
+6. 🍃 Mindful
+7. 🌙 Serene
+
+😔 Sad / Low Moods
+1. 😔 Sad
+2. 😞 Disappointed
+3. 😢 Emotional
+4. 💔 Heartbroken
+5. 😕 Confused
+6. 🥀 Lonely
+7. 🌧️ Gloomy
+
+😤 Intense / Energetic Moods
+1. 😤 Determined
+2. 🔥 Energetic
+3. 🤯 Overwhelmed
+4. ⚡ Hyper
+5. 🏃 Restless
+6. 🎯 Focused
+
+😠 Angry / Frustrated Moods
+1. 😠 Angry
+2. 😡 Furious
+3. 😤 Frustrated
+4. 😒 Annoyed
+5. 🔥 Irritated
+
+😨 Anxious / Stressed Moods
+1. 😟 Anxious
+2. 😰 Stressed
+3. 😬 Nervous
+4. 🫣 Uneasy
+5. 🌪️ Chaotic
+
+🤔 Thoughtful / Creative Moods
+1. 🤔 Thoughtful
+2. 🧠 Reflective
+3. ✍️ Creative
+4. 🎨 Inspired
+5. 🌌 Imaginative
