@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Dynamically load API routes from the /api directory
 const apiDir = path.join(__dirname, 'api');
