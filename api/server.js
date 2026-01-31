@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 import fetch from 'node-fetch'; // Use node-fetch for server-side fetching
 const app = express();
 
@@ -103,4 +103,4 @@ app.get('/api/lastfm/test', async (req, res) => {
     }
 });
 
-module.exports = app;
+export default app;
