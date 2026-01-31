@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "node local-server.js",
     "start": "node index.js"
   },
   "dependencies": {
