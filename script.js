@@ -175,7 +175,7 @@ generateButton.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(`https://mood-ify-sigma.vercel.app/api/server/lastfm/track-search?mood=${encodeURIComponent(selectedMoodText)}`);
+        const response = await fetch(`/api/lastfm/track-search?mood=${encodeURIComponent(selectedMoodText)}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
