@@ -21,8 +21,8 @@ export default async function (req, res) {
     const searchTerm = mood;
 
     const params = new URLSearchParams({
-        method: 'track.search',
-        track: searchTerm,
+        method: 'tag.getTopTracks',
+        tag: searchTerm.toLowerCase(),
         api_key: LASTFM_API_KEY,
         format: 'xml'
     });

@@ -106,7 +106,8 @@ let selectedMoodText = ''; // Variable to store the currently selected mood
 moodButtons.forEach(button => {
     button.addEventListener('click', () => {
         const buttonText = button.textContent.trim();
-        selectedMoodText = button.textContent.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
+        // Remove emojis and keep only text
+        selectedMoodText = button.textContent.replace(/[^\p{L}\p{N}\s]/gu, '').trim();
         const selectedColor = moodColors[buttonText] || '#007bff'; // Default blue if not found
         const lighterColor = lightenColor(selectedColor, 0.3); // Lighten by 30%
 
@@ -179,10 +180,19 @@ generateButton.addEventListener('click', async () => {
         if (!response.ok) {
             let errorMessage = `HTTP error! status: ${response.status}`;
             try {
-                const errorData = await response.json();
-                if (errorData.error) errorMessage = errorData.error;
+                const text = await response.text();
+                try {
+                    const errorData = JSON.parse(text);
+                    if (errorData.error) errorMessage = errorData.error;
+                } catch {
+                    // If not JSON, use the text body (likely HTML or plain text)
+                    // Truncate if too long (e.g. HTML page)
+                    const preview = text.slice(0, 200);
+                    console.warn('Response was not JSON:', text);
+                    errorMessage = `Server Error (${response.status}): ${preview}`;
+                }
             } catch (e) {
-                console.warn('Could not parse error response as JSON', e);
+                console.warn('Could not read response text', e);
             }
             throw new Error(errorMessage);
         }
@@ -202,7 +212,7 @@ generateButton.addEventListener('click', async () => {
 
         tracks.forEach(track => {
             const title = track.querySelector('name')?.textContent || 'Unknown Title';
-            const artist = track.querySelector('artist')?.textContent || 'Unknown Artist';
+            const artist = track.querySelector('artist > name')?.textContent || track.querySelector('artist')?.textContent || 'Unknown Artist';
             const trackUrl = track.querySelector('url')?.textContent; // Get the URL
 
             // Skip this track if it has no URL or the URL is just '#'
@@ -218,6 +228,15 @@ generateButton.addEventListener('click', async () => {
             const newCard = createPlaylistCard(playlist);
             playlistCardsContainer.appendChild(newCard);
         });
+
+        if (playlistCardsContainer.children.length === 0) {
+            const noResultsMessage = document.createElement('p');
+            noResultsMessage.id = 'no-playlists-message';
+            noResultsMessage.textContent = `No tracks found for mood: ${selectedMoodText}. Try another mood!`;
+            playlistCardsContainer.appendChild(noResultsMessage);
+            playlistCardsContainer.style.display = 'block';
+            return;
+        }
 
         playlistCardsContainer.style.display = 'flex'; // Display the container with new cards
     } catch (error) {

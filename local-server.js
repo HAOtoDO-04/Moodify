@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import fs from 'fs';
 import dotenv from 'dotenv';
 
@@ -29,7 +29,8 @@ async function mountApiRoutes(dir, prefix = '/api') {
         } else if (file.endsWith('.js')) {
             const routePath = `${prefix}/${file.slice(0, -3)}`.replace(/\/index$/, '');
             try {
-                const module = await import(`file://${fullPath}`);
+                const fileUrl = pathToFileURL(fullPath).href;
+                const module = await import(fileUrl);
                 if (module.default) {
                     app.all(routePath, (req, res) => {
                         // Mock Vercel request/response if needed
