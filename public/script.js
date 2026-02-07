@@ -194,12 +194,6 @@ generateButton.addEventListener('click', async () => {
         }
 
         tracks.forEach(track => {
-            const streamable = track.querySelector('streamable')?.textContent;
-            // Skip this track if it's not streamable (streamable !== '1')
-            if (streamable !== '1') {
-                return;
-            }
-
             const title = track.querySelector('name')?.textContent || 'Unknown Title';
             const artist = track.querySelector('artist')?.textContent || 'Unknown Artist';
             const trackUrl = track.querySelector('url')?.textContent; // Get the URL
@@ -226,25 +220,4 @@ generateButton.addEventListener('click', async () => {
     }
 });
 
-moodButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const buttonText = button.textContent.trim();
-        const selectedColor = moodColors[buttonText] || '#007bff'; // Default blue if not found
-        const lighterColor = lightenColor(selectedColor, 0.3); // Lighten by 30%
 
-        moodButtons.forEach(btn => {
-            if (btn !== button) {
-                btn.style.backgroundColor = '#6c757d'; // Deselected color
-                btn.style.color = '#e9ecef';
-            } else {
-                btn.style.backgroundColor = selectedColor; // Apply specific mood color
-                btn.style.color = 'white';
-            }
-        });
-
-        // Update body background with a gradient
-        if (document.body) {
-            document.body.style.background = `linear-gradient(to bottom right, ${lighterColor}, ${selectedColor})`;
-        }
-    });
-});;

@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 const LASTFM_API_KEY = process.env.LASTFM_API_KEY;
-const LASTFM_API_URL = 'http://ws.audioscrobbler.com/2.0/';
+const LASTFM_API_URL = 'https://ws.audioscrobbler.com/2.0/';
 
 export default async function (req, res) {
     console.log('Received request for Last.fm API test.');
