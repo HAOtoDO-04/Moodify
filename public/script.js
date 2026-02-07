@@ -177,7 +177,14 @@ generateButton.addEventListener('click', async () => {
     try {
         const response = await fetch(`/api/lastfm/track-search?mood=${encodeURIComponent(selectedMoodText)}`);
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            let errorMessage = `HTTP error! status: ${response.status}`;
+            try {
+                const errorData = await response.json();
+                if (errorData.error) errorMessage = errorData.error;
+            } catch (e) {
+                console.warn('Could not parse error response as JSON', e);
+            }
+            throw new Error(errorMessage);
         }
         const xmlText = await response.text();
         const parser = new DOMParser();
